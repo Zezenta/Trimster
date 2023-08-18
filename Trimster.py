@@ -30,7 +30,7 @@ for i in range(rounded_num_segments):
    start_time = i * 30
    end_time = (i + 1) * 30
    trimmed_clip = video_clip.subclip(start_time, end_time)
-   trimmed_clip.write_videofile(f"{video_name} Part {i+1}.mp4")
+   trimmed_clip.write_videofile(f"{video_name} Part {i+1}.mp4", audio_codec='aac')
    video_clip.close()
 
 if leftover_time > 0:
@@ -38,7 +38,7 @@ if leftover_time > 0:
     video_clip = VideoFileClip(filename)
     trimmed_clip = video_clip.subclip((rounded_num_segments * 30), file_duration)
     final_part = rounded_num_segments + 1
-    trimmed_clip.write_videofile(f"{video_name} Part {final_part}.mp4")
+    trimmed_clip.write_videofile(f"{video_name} Part {final_part}.mp4", audio_codec='aac')
     video_clip.close()
 
 print("All videos have been created!")
